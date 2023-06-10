@@ -64,6 +64,7 @@ DOWNLOAD_DELAY = 3
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    "pchardwarescraper.pipelines.PchardwarescraperPipeline": 300,
+   "pchardwarescraper.pipelines.SupabasePipeline": 400,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
