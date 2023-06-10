@@ -48,6 +48,32 @@ class SupabasePipeline:
         trimmed_word = ' '.join(prod_arr[:word_length])
         return trimmed_word
 
+    def search_component_similarity(self, category, brand, trimmed_name):
+        category = category.replace(' ', '_')
+        rpc_name = f'search_{category.lower()}_similarity'
+        params = {'p_brand': brand, 'p_model_name': trimmed_name}
+        resp = self.client.rpc(rpc_name, params=params).execute()
+        return resp.data if resp.data else None
+
+    def insert_no_match_product(self, name, category, link, price):
+        self.client.table('no_match_products').insert({
+            'name': name,
+            'category': category,
+            'link': link,
+            'price': price
+        }).execute()
+
+    def insert_vendor_component(self, vendor, category, component_id, price, link, title):
+        category = category.replace(' ', '_')
+        table_name = f'vendor_{category.lower()}'
+        self.client.table(table_name).insert({
+            'vendor_id': vendor,
+            'component_id': component_id,
+            'price': price,
+            'link': link,
+            'title': title
+        }).execute()
+
     def process_item(self, item, spider):
         adapter = ItemAdapter(item)
         category = adapter['category']
@@ -58,22 +84,19 @@ class SupabasePipeline:
         if category == 'Processor':
             brand = name.split(" ")[0].replace("®", "")
             trimmed_name = self.trim_prod_name(name, 5)
-            resp = self.client.rpc("search_processor_similarity", params={'p_brand': brand, 'p_model_name': trimmed_name}).execute()
-            data = resp.data
+            data = self.search_component_similarity(category, brand, trimmed_name)
             if not data:
-                self.client.table("no_match_products").insert({"name": name, "category": category, "link": link,'price': price}).execute()
+                self.insert_no_match_product(name, category, link, price)
             else:
-                self.client.table("vendor_processor").insert({"vendor_id":vendor, "component_id": resp.data[0]['full_name'], "price": price, "link": link, "title": name}).execute()
+                self.insert_vendor_component(vendor, category, data[0]['full_name'], price, link, name)
         elif category == 'Motherboard':
             brand = name.split(" ")[0].replace("®", "")
             trimmed_name = self.trim_prod_name(name, 7)
-            resp = self.client.rpc("search_motherboard_similarity", params={'p_brand': brand, 'p_model_name': trimmed_name}).execute()
-            data = resp.data
+            data = self.search_component_similarity(category, brand, trimmed_name)
             if not data:
-                self.client.table("no_match_products").insert({"name": name, "category": category, "link": link,'price': price}).execute()
+                self.insert_no_match_product(name, category, link, price)
             else:
-                self.client.table("vendor_motherboard").insert({"vendor_id":vendor, "component_id": resp.data[0]['full_name'], "price": price, "link": link, "title": name}).execute()
-
+                self.insert_vendor_component(vendor, category, data[0]['full_name'], price, link, name)
         return item
             
 
