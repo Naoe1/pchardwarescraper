@@ -97,6 +97,13 @@ class SupabasePipeline:
                 self.insert_no_match_product(name, category, link, price)
             else:
                 self.insert_vendor_component(vendor, category, data[0]['full_name'], price, link, name)
+        elif category =='Video card':
+            brand = name.split(" ")[0].replace("®", "")
+            data = self.search_component_similarity(category, brand, name)
+            if not data:
+                self.insert_no_match_product(name, category, link, price)
+            else:
+                self.insert_vendor_component(vendor, category, data[0]['full_name'], price, link, name)
         return item
             
 
