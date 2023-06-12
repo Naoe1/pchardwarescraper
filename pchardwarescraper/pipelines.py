@@ -42,6 +42,9 @@ class SupabasePipeline:
     
     def open_spider(self, spider):
         self.client: Client = create_client(self.supabase_url,self.supabase_key)
+        vendor_talbes = ['processor', 'motherboard', 'video_card',]
+        for table_name in vendor_talbes:
+            self.client.table(f'vendor_{table_name}').delete().eq("vendor_id", spider.name).execute()
 
     def trim_prod_name(self, product_name, word_length):
         prod_arr = product_name.split()
