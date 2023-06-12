@@ -2,7 +2,7 @@ import scrapy
 
 
 class DynaquestsSpider(scrapy.Spider):
-    name = "dynaquests"
+    name = "Dynaquest"
     allowed_domains = ["dynaquestpc.com"]
     start_urls = ["https://dynaquestpc.com/collections/processor","https://dynaquestpc.com/collections/graphics-card", "https://dynaquestpc.com/collections/motherboard"]
     

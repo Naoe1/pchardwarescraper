@@ -3,7 +3,7 @@ import re
 import math
 
 class TechmoversSpider(scrapy.Spider):
-    name = "techmovers"
+    name = "Techmovers"
     allowed_domains = ["www.techmoversph.com"]
     start_urls = ["https://www.techmoversph.com/Processors-c82748371", "https://www.techmoversph.com/Graphics-Cards-c83585010", "https://www.techmoversph.com/Motherboards-c143943026"]
     

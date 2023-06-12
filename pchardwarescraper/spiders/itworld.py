@@ -2,7 +2,7 @@ import scrapy
 
 
 class ItworldSpider(scrapy.Spider):
-    name = "itworld"
+    name = "IT World"
     allowed_domains = ["itworldph.com"]
     start_urls = ["https://itworldph.com/shop/category/processors-62", "https://itworldph.com/shop/category/video-cards-64", "https://itworldph.com/shop/category/motherboards-61", ]
 
