@@ -4,7 +4,7 @@ import scrapy
 class DynaquestsSpider(scrapy.Spider):
     name = "Dynaquest"
     allowed_domains = ["dynaquestpc.com"]
-    start_urls = ["https://dynaquestpc.com/collections/processor","https://dynaquestpc.com/collections/graphics-card", "https://dynaquestpc.com/collections/motherboard"]
+    start_urls = ["https://dynaquestpc.com/collections/processor","https://dynaquestpc.com/collections/graphics-card", "https://dynaquestpc.com/collections/motherboard", "https://dynaquestpc.com/collections/memory", "https://dynaquestpc.com/collections/chassis", "https://dynaquestpc.com/collections/hard-drive", "https://dynaquestpc.com/collections/ssd-m-2", "https://dynaquestpc.com/collections/power-supply"]
     
     def parse(self, response):
         category = response.url.split("/")[-1].split("?")[0]

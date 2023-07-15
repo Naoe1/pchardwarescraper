@@ -4,7 +4,7 @@ import scrapy
 class ItworldSpider(scrapy.Spider):
     name = "IT World"
     allowed_domains = ["itworldph.com"]
-    start_urls = ["https://itworldph.com/shop/category/processors-62", "https://itworldph.com/shop/category/video-cards-64", "https://itworldph.com/shop/category/motherboards-61", ]
+    start_urls = ["https://itworldph.com/shop/category/processors-62", "https://itworldph.com/shop/category/video-cards-64", "https://itworldph.com/shop/category/motherboards-61", "https://itworldph.com/shop/category/chassis-65", "https://itworldph.com/shop/category/cooling-systems-aircooling-system-92", "https://itworldph.com/shop/category/cooling-systems-aio-liquid-cooling-system-89", "https://itworldph.com/shop/category/memory-modules-57", "https://itworldph.com/shop/category/storage-devices-hard-disk-106", "https://itworldph.com/shop/category/storage-devices-solid-state-drive-72", "https://itworldph.com/shop/category/power-sources-63", "https://bermorzone.com.ph/product-category/cooling-systems/aircooling-system/",  ]
 
     def parse(self, response):
         category = response.url.split("/")[5]

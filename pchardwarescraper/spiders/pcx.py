@@ -4,7 +4,7 @@ import scrapy
 class PcxSpider(scrapy.Spider):
     name = "PC Express"
     allowed_domains = ["pcx.com.ph"]
-    start_urls = ["https://pcx.com.ph/product-category/components/processor/", "https://pcx.com.ph/product-category/components/motherboards/", "https://pcx.com.ph/product-category/components/graphics-card/"]
+    start_urls = ["https://pcx.com.ph/product-category/components/processor/", "https://pcx.com.ph/product-category/components/motherboards/", "https://pcx.com.ph/product-category/components/graphics-card/", "https://pcx.com.ph/product-category/components/power-supply/", "https://pcx.com.ph/product-category/components/internal-storage/", "https://pcx.com.ph/product-category/components/pc-cases/"]
 
     def parse(self, response):
         category = response.url.split("/")[5]

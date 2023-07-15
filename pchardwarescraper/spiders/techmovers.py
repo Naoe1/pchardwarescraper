@@ -5,7 +5,7 @@ import math
 class TechmoversSpider(scrapy.Spider):
     name = "Techmovers"
     allowed_domains = ["www.techmoversph.com"]
-    start_urls = ["https://www.techmoversph.com/Processors-c82748371", "https://www.techmoversph.com/Graphics-Cards-c83585010", "https://www.techmoversph.com/Motherboards-c143943026"]
+    start_urls = ["https://www.techmoversph.com/Processors-c82748371", "https://www.techmoversph.com/Graphics-Cards-c83585010", "https://www.techmoversph.com/Motherboards-c143943026", "https://www.techmoversph.com/Rams-c82748385", "https://www.techmoversph.com/Cases-c92649027", "https://www.techmoversph.com/Coolers-c82748402", "https://www.techmoversph.com/Power-Supply-c99132002", "https://www.techmoversph.com/Hard-Drives-c82748393", "https://www.techmoversph.com/Solid-State-Drives-c82748396" ]
     
     def parse(self, response):
         category = response.url.split("/")[-1].split("?")[0].split("-")[0]

@@ -4,7 +4,7 @@ import json
 class EasypcSpider(scrapy.Spider):
     name = "EasyPC"
     allowed_domains = ["https://easypc.com.ph"]
-    start_urls = ["https://easypc.com.ph/collections/processor-amd/products.json?limit=250", "https://easypc.com.ph/collections/processor-intel/products.json?limit=250", "https://easypc.com.ph/collections/motherboard/products.json?limit=250", "https://easypc.com.ph/collections/graphic-card/products.json?limit=250"]
+    start_urls = ["https://easypc.com.ph/collections/processor-amd/products.json?limit=250", "https://easypc.com.ph/collections/processor-intel/products.json?limit=250", "https://easypc.com.ph/collections/motherboard/products.json?limit=250", "https://easypc.com.ph/collections/graphic-card/products.json?limit=250", "https://easypc.com.ph/collections/cpu-cooling/products.json?limit=250", "https://easypc.com.ph/collections/pc-case/products.json?limit=250", "https://easypc.com.ph/collections/power-supply/products.json?limit=250", "https://easypc.com.ph/collections/hard-disk/products.json?limit=250", "https://easypc.com.ph/collections/memory/products.json?limit=250", "https://easypc.com.ph/collections/solid-state-drive/products.json?limit=250"]
     
     def parse(self, response):
         products = json.loads(response.text)['products']

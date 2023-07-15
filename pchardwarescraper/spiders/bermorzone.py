@@ -4,7 +4,7 @@ import scrapy
 class BermorzoneSpider(scrapy.Spider):
     name = "Bermorzone"
     allowed_domains = ["bermorzone.com.ph"]
-    start_urls = ["https://bermorzone.com.ph/product-category/processors/", "https://bermorzone.com.ph/product-category/video-cards/", "https://bermorzone.com.ph/product-category/motherboard/amd-motherboards/", "https://bermorzone.com.ph/product-category/motherboard/intel-motherboards/"]
+    start_urls = ["https://bermorzone.com.ph/product-category/processors/", "https://bermorzone.com.ph/product-category/video-cards/", "https://bermorzone.com.ph/product-category/motherboard/amd-motherboards/", "https://bermorzone.com.ph/product-category/motherboard/intel-motherboards/", "https://bermorzone.com.ph/product-category/memory-modules/desktop-memory/", "https://bermorzone.com.ph/product-category/power-sources/", "https://bermorzone.com.ph/product-category/cooling-systems/aio-liquid-cooling-system/"]
 
     def parse(self, response):
         category = response.url.split("/")[4]
