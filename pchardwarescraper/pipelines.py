@@ -63,6 +63,10 @@ class SupabasePipeline:
         self.client.table('no_match_products').delete().eq(
             "vendor_id", spider.name).execute()
 
+    def close_spider(self, spider):
+        self.client.rpc('execute_update_min_price_rpc', params={}).execute()
+        print('done')
+        
     def trim_prod_name(self, product_name, word_length):
         prod_arr = product_name.split()
         trimmed_word = ' '.join(prod_arr[:word_length])
