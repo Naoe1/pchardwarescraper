@@ -4,8 +4,7 @@ import scrapy
 class ItworldSpider(scrapy.Spider):
     name = "IT World"
     allowed_domains = ["itworldph.com"]
-    start_urls = ["https://itworldph.com/shop/category/processors-62", "https://itworldph.com/shop/category/video-cards-64", "https://itworldph.com/shop/category/motherboards-61", "https://itworldph.com/shop/category/chassis-65", "https://itworldph.com/shop/category/cooling-systems-aircooling-system-92", "https://itworldph.com/shop/category/cooling-systems-aio-liquid-cooling-system-89", "https://itworldph.com/shop/category/memory-modules-57", "https://itworldph.com/shop/category/storage-devices-hard-disk-106", "https://itworldph.com/shop/category/storage-devices-solid-state-drive-72", "https://itworldph.com/shop/category/power-sources-63", "https://bermorzone.com.ph/product-category/cooling-systems/aircooling-system/",  ]
-
+    start_urls = ["https://itworldph.com/shop/category/processor-137", "https://itworldph.com/shop/category/video-card-gpu-123", "https://itworldph.com/shop/category/motherboard-152", "https://itworldph.com/shop/category/chassis-116", "https://itworldph.com/shop/category/cpu-coolers-air-cooling-197","https://itworldph.com/shop/category/cpu-coolers-liquid-cooling-174", "https://itworldph.com/shop/category/memory-130", "https://itworldph.com/shop/category/storage-device-internal-ssd-solid-state-drives-127", "https://itworldph.com/shop/category/storage-device-internal-hdd-hard-drives-234", "https://itworldph.com/shop/category/power-supply-144"  ]
     def parse(self, response):
         category = response.url.split("/")[5]
         for product in response.css('.o_wsale_product_information_text'):
@@ -18,7 +17,7 @@ class ItworldSpider(scrapy.Spider):
             }
         
         pagination = response.css('ul.pagination li a')
-        if pagination is not None and pagination != []:
-            next_page = pagination[-1].attrib['href']
+        next_page = pagination[-1].attrib['href']
+        if next_page is not None and pagination != [] and next_page != '':
             next_page_url = "https://itworldph.com" + next_page
             yield response.follow(next_page_url, callback=self.parse)

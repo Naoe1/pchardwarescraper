@@ -118,7 +118,7 @@ class SupabasePipeline:
         price = adapter['price']
         vendor = adapter['vendor']
         if category == 'Processor':
-            brand = name.split(" ")[0].replace("®", "")
+            brand = name.replace("ITW | ", "").split(" ")[0].replace("®", "")
             trimmed_name = self.trim_prod_name(name, 5)
             data = self.search_component_similarity(
                 category, brand, trimmed_name)
@@ -129,7 +129,7 @@ class SupabasePipeline:
                 self.insert_vendor_component(
                     vendor, category, data[0]['full_name'], price, link, name)
         elif category == 'Motherboard':
-            brand = name.split(" ")[0].replace("®", "")
+            brand = name.replace("ITW | ", "").split(" ")[0].replace("®", "")
             trimmed_name = self.trim_prod_name(name, 7)
             data = self.search_component_similarity(
                 category, brand, trimmed_name)
@@ -140,7 +140,7 @@ class SupabasePipeline:
                 self.insert_vendor_component(
                     vendor, category, data[0]['full_name'], price, link, name)
         elif category == 'Video card':
-            brand = name.split(" ")[0].replace("®", "")
+            brand = name.replace("ITW | ", "").split(" ")[0].replace("®", "")
             data = self.search_component_similarity(category, brand, name)
             if not data:
                 self.insert_no_match_product(

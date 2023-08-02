@@ -44,5 +44,16 @@ categories = {
     "memory-modules": "Memory",
     "power-sources": "Power supply",
     "cooling-systems": "CPU Cooler",
-    
+    "processor-137": "Processor",
+    "video-card-gpu-123": "Video card",
+    "motherboard-152": "Motherboard",
+    "chassis-116": "Chassis",
+    "cpu-coolers-150": "CPU Cooler",
+    "memory-130": "Memory",
+    "storage-device-126": "Storage",
+    "storage-device-internal-ssd-solid-state-drives-127": "Storage",
+    "storage-device-internal-hdd-hard-drives-234": "Storage",
+    "power-supply-144": "Power supply",
+    "cpu-coolers-air-cooling-197": "CPU Cooler",
+    "cpu-coolers-liquid-cooling-174": "CPU Cooler",
 }
